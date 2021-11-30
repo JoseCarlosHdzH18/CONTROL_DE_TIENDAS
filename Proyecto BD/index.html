@@ -10,28 +10,25 @@
 </head>
 
 <body>
-    <main class="contenido-centrado ">
-        
-        <div class="botones-principales">
-            <a href="#" class="boton-verde boton-principal">Iniciar Venta</a>
-            <a href="#" class="boton-azulClaro boton-principal">Historial de Ventas</a>
-        </div>
+    <div class="login contenido-centrado">
+        <h1>Inicia Sesión</h1>
+        <form action="#" class="formulario" id="login">
+            <fieldset>
 
-        <div class="botones-secundarios">
-            <a href="producto.html" class="boton">Agregar Producto</a>
-            <a href="proveedor.html" class="boton">Agregar Proveedor</a>
-            <a href="vendedor.html" class="boton">Agregar Vendedor</a>
-            <a href="sucursal.html" class="boton">Agregar Sucursal</a>
-        </div>
+                <label for="idEmpleado">ID</label>
+                <input type="number" placeholder="ID" id="idEmpleado" required>
 
-        <div class="botones-secundarios">
-            <a href="producto.html" class="boton">Modificar Producto</a>
-            <a href="proveedor.html" class="boton">Modificar Proveedor</a>
-            <a href="vendedor.html" class="boton">Modificar Vendedor</a>
-            <a href="sucursal.html" class="boton">Modificar Sucursal</a>
-        </div>
+                <label for="password">Contraseña</label>
+                <input type="password" placeholder="Contraseña" id="password" required>
 
-    </main>
+                <input type="submit" value="Iniciar Sesión" class="boton">
+
+            </fieldset>
+
+        </form>
+    </div>
+
+    <script src="js/app.js"></script>
 </body>
 
 </html>
