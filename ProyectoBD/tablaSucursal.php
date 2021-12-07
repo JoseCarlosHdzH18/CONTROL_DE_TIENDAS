@@ -28,7 +28,7 @@
         <h1>Sucursales</h1>
     </header>
     <body>
-        <div class="tabla">
+        <div class="tabla contenido-centrado">
         <table>
             <tr>
                 <th>ID</th>
@@ -46,13 +46,13 @@
                         <td>
                             <form action='modificarSucursal.php' method='POST'>
                             <input type='hidden' name='ID' value='$fila[0]'>
-                            <input type='submit' name='boton' value='Modificar'>
+                            <input type='submit' name='boton' value='Modificar' class='btn-modificar'>
                             </form>
                         </td>
                         <td>
                             <form action='tablaSucursal.php' method='POST'>
                             <input type='hidden' name='ID' value='$fila[0]'>
-                            <input type='submit' name='boton' value='Eliminar'>
+                            <input type='submit' name='boton' value='Eliminar' class='btn-eliminar'>
                             </form>
                         </td>
                         </tr>";
