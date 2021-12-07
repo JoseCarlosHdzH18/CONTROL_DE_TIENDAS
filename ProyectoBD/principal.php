@@ -29,7 +29,7 @@ incluirTemplate('header');
             <a href="modificarProveedor.php" class="boton">Modificar Proveedor</a>
             <a href="modificarVendedor.php" class="boton">Modificar Vendedor</a>
             <a href="modificarSucursal.php" class="boton">Modificar Sucursal</a>
-            <a href="modificarClientes.php" class="boton">Modificar Cliente</a>
+            <a href="tablaClientes.php" class="boton">Modificar Cliente</a>
         </div>
 
     </main>

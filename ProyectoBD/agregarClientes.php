@@ -78,7 +78,7 @@ incluirTemplate('header');
                 <input type="text" placeholder="Nombre Completo" id="nombre" name="nombre" required>
 
                 <label for="telefono">Teléfono</label>
-                <input type="tel" placeholder="Teléfono de la Sucursal" id="telefono" name="telefono" required>
+                <input type="tel" placeholder="Teléfono del Cliente" id="telefono" name="telefono" required>
 
             </fieldset>
 
