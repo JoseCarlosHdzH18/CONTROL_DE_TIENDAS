@@ -1,6 +1,6 @@
 table{
-    width: 100%;
-    margin: 50px 10px ;
+    width: 99%;
+    margin: 50px 10px;
     align-content: center;
 }
 table, th, td{
@@ -31,7 +31,4 @@ tr:nth-child(odd){
 }
 tr:hover{
     background-color: #b2ff98;
-}
-#botontabla{
-    background-color: rgb(150, 14, 14);
 }

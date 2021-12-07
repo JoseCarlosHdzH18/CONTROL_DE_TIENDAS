@@ -4,11 +4,8 @@
     $db = conectarDB();
 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && strcmp($_POST['boton'], "Eliminar") == 0){
-        if(strcmp($_POST['boton'], "Eliminar") == 0){
-            echo "ID = ".$_POST['ID']."<br>";
-            //$query = "DELETE FROM clientes WHERE (IdClientes = ".$_POST['ID'].");";
-        }
-        //mysqli_query($db, $query);
+        $query = "DELETE FROM clientes WHERE (IdClientes = ".$_POST['ID'].");";
+        mysqli_query($db, $query);
     }
     $query = "Select * FROM CLIENTES";
     $resultado = mysqli_query($db, $query);
