@@ -3,7 +3,7 @@
     require 'includes/funciones.php';
     $db = conectarDB();
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && strcmp($_POST['boton'], "Eliminar") == 0){
         if(strcmp($_POST['boton'], "Eliminar") == 0){
             echo "ID = ".$_POST['ID']."<br>";
             //$query = "DELETE FROM clientes WHERE (IdClientes = ".$_POST['ID'].");";

@@ -32,6 +32,6 @@ tr:nth-child(odd){
 tr:hover{
     background-color: #b2ff98;
 }
-#botontabla:hover{
-    background-color: rgb(184, 50, 50);
+#botontabla{
+    background-color: rgb(150, 14, 14);
 }

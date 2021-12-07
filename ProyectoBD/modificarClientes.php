@@ -3,7 +3,38 @@ require 'includes/funciones.php';
 require 'includes/config/database.php';
 $db = conectarDB();
 
-$query = "Select * FROM CLIENTES WHERE IdClientes=".$_POST['ID'].";";
+if($_SERVER['REQUEST_METHOD'] === 'POST' && strcmp($_POST['boton'], "Guardar") == 0) {
+
+    // Llenar las variables con los valores
+    $nombre = mysqli_real_escape_string($db, $_POST['nombre']);
+    $telefono = mysqli_real_escape_string($db, $_POST['telefono']);
+
+    if(!$nombre){
+        $errores[] = "Falta nombre";
+    }
+
+    if(!$telefono){
+        $errores[] = "Falta teléfono";
+    }
+
+    // Revisar que todos los campos esten completos
+    if(empty($errores)) {
+
+        //Insertar en la BD
+        $query = "UPDATE clientes SET NombreCliente = '".$_POST['nombre']."', Telefono = '".$_POST['telefono']."' WHERE (IdClientes = '".$_POST['ID']."');";
+
+        $resultado = mysqli_query($db, $query);
+        
+        if($resultado) {
+            echo'<script type="text/javascript">
+                    alert("Cliente Modificado Correctamente");
+                    window.location.href="principal.php";
+                </script>';
+        }
+    }
+}
+
+$query = "SELECT * FROM CLIENTES WHERE IdClientes=".$_POST['ID'].";";
 $resultado = mysqli_query($db, $query);
 $cliente = mysqli_fetch_row($resultado);
 
@@ -27,19 +58,19 @@ incluirTemplate('header');
 
         <h1>Modificar un Cliente</h1>
 
-        <form class="formulario">
+        <form class="formulario" method="POST">
             <fieldset>
                 <legend> Información sobre el Cliente</legend>
-                <?php echo "<input type='Hidden' name='ID' value='".$_POST['ID']."'>"?>
+                <?php echo "<input type='hidden' name='ID' value='".$cliente[0]."'>"?>
                 <label for="nombre">Nombre</label>
-                <?php echo "<input placeholder='Nombre Completo' type='text' id='nombre' value='".$cliente[1]."' required>" ?>
+                <?php echo "<input placeholder='Nombre Completo' type='text' name='nombre' value='".$cliente[1]."' required>" ?>
 
                 <label for="telefono">Teléfono</label>
-                <?php echo "<input type='tel' placeholder='Teléfono del Cliente' id='telefono' value='".$cliente[2]."' required>" ?>
+                <?php echo "<input type='tel' placeholder='Teléfono del Cliente' name='telefono' value='".$cliente[2]."' required>" ?>
 
             </fieldset>
 
-            <input type="submit" value="Guardar" class="boton">
+            <input type="submit" name="boton" value="Guardar" class="boton">
         </form>
 
     </main>
