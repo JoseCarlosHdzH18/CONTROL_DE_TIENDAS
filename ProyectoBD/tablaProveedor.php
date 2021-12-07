@@ -4,10 +4,10 @@
     $db = conectarDB();
 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && strcmp($_POST['boton'], "Eliminar") == 0){
-        $query = "DELETE FROM clientes WHERE (IdClientes = ".$_POST['ID'].");";
+        $query = "DELETE FROM proveedor WHERE (IdProveedor = ".$_POST['ID'].");";
         mysqli_query($db, $query);
     }
-    $query = "Select * FROM clientes";
+    $query = "Select * FROM proveedor";
     $resultado = mysqli_query($db, $query);
 
     incluirTemplate('header');
@@ -23,7 +23,7 @@
               </svg>
             </a>
         </div>
-        <h1>Clientes</h1>
+        <h1>Proveedores</h1>
     </header>
     <body>
         <div class="tabla">
@@ -42,13 +42,13 @@
                         <td>$fila[1]</td>
                         <td>$fila[2]</td>
                         <td>
-                            <form action='modificarClientes.php' method='POST'>
+                            <form action='modificarProveedor.php' method='POST'>
                             <input type='hidden' name='ID' value='$fila[0]'>
                             <input type='submit' name='boton' value='Modificar'>
                             </form>
                         </td>
                         <td>
-                            <form action='tablaClientes.php' method='POST'>
+                            <form action='tablaProveedor.php' method='POST'>
                             <input type='hidden' name='ID' value='$fila[0]'>
                             <input type='submit' name='boton' value='Eliminar'>
                             </form>
@@ -56,7 +56,7 @@
                         </tr>";
                 }
             ?>
-        </table>   
-        </div>
+        </table>
+        </div>   
     </body>
 </html>

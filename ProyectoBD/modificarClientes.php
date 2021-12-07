@@ -3,7 +3,7 @@ require 'includes/funciones.php';
 require 'includes/config/database.php';
 $db = conectarDB();
 
-if($_SERVER['REQUEST_METHOD'] === 'POST' && strcmp($_POST['boton'], "Guardar") == 0) {
+if(strcmp($_POST['boton'], "Guardar") == 0) {
 
     // Llenar las variables con los valores
     $nombre = mysqli_real_escape_string($db, $_POST['nombre']);
@@ -20,8 +20,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && strcmp($_POST['boton'], "Guardar") =
     // Revisar que todos los campos esten completos
     if(empty($errores)) {
 
-        //Insertar en la BD
-        $query = "UPDATE clientes SET NombreCliente = '".$_POST['nombre']."', Telefono = '".$_POST['telefono']."' WHERE (IdClientes = '".$_POST['ID']."');";
+        //Actualizar en la BD
+        $query = "UPDATE clientes SET NombreCliente = '".$_POST['nombre']."', Telefono = ".$_POST['telefono']." WHERE (IdClientes = '".$_POST['ID']."');";
 
         $resultado = mysqli_query($db, $query);
         
@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && strcmp($_POST['boton'], "Guardar") =
     }
 }
 
-$query = "SELECT * FROM CLIENTES WHERE IdClientes=".$_POST['ID'].";";
+$query = "SELECT * FROM clientes WHERE IdClientes=".$_POST['ID'].";";
 $resultado = mysqli_query($db, $query);
 $cliente = mysqli_fetch_row($resultado);
 

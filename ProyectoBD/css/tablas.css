@@ -1,34 +1,29 @@
 table{
-    width: 99%;
-    margin: 50px 10px;
-    align-content: center;
+    width: 100%;
+}
+.tabla{
+    padding: 10px;
 }
 table, th, td{
-    border: 1px double black;
+    border: 1px solid black;
     border-collapse:collapse;
     padding: 10px;
     border-spacing: 1px;
 }
 td{
     text-align: center;
-}   
+}
 th{
     font-size: 20px;
     color: wheat;
     background-color: darkblue;
 }
-caption{
-    color: red;
-    font-size: 70px;
-    font-family: 'Festive';
-    line-height: 90px;
-}
 tr:nth-child(even){
-    background-color: #f1faee;
+    background-color: #ddfdd3;
 }
 tr:nth-child(odd){
     background-color:#a8dadc;
 }
 tr:hover{
-    background-color: #b2ff98;
+    background-color: #fa6b52;
 }

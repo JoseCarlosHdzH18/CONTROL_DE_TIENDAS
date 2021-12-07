@@ -4,10 +4,12 @@
     $db = conectarDB();
 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && strcmp($_POST['boton'], "Eliminar") == 0){
-        $query = "DELETE FROM clientes WHERE (IdClientes = ".$_POST['ID'].");";
+        $query = "DELETE FROM sucursal WHERE (IdSucursal = ".$_POST['ID'].");";
+        mysqli_query($db, $query);
+        $query = "DELETE FROM existencia WHERE (IdSucursal = ".$_POST['ID'].");";
         mysqli_query($db, $query);
     }
-    $query = "Select * FROM clientes";
+    $query = "Select * FROM sucursal";
     $resultado = mysqli_query($db, $query);
 
     incluirTemplate('header');
@@ -23,14 +25,14 @@
               </svg>
             </a>
         </div>
-        <h1>Clientes</h1>
+        <h1>Sucursales</h1>
     </header>
     <body>
         <div class="tabla">
         <table>
             <tr>
                 <th>ID</th>
-                <th>Nombre</th>
+                <th>Dirección</th>
                 <th>Teléfono</th>
                 <th colspan="2">Acción</th>
             </tr>
@@ -42,13 +44,13 @@
                         <td>$fila[1]</td>
                         <td>$fila[2]</td>
                         <td>
-                            <form action='modificarClientes.php' method='POST'>
+                            <form action='modificarSucursal.php' method='POST'>
                             <input type='hidden' name='ID' value='$fila[0]'>
                             <input type='submit' name='boton' value='Modificar'>
                             </form>
                         </td>
                         <td>
-                            <form action='tablaClientes.php' method='POST'>
+                            <form action='tablaSucursal.php' method='POST'>
                             <input type='hidden' name='ID' value='$fila[0]'>
                             <input type='submit' name='boton' value='Eliminar'>
                             </form>

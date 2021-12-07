@@ -26,9 +26,9 @@ incluirTemplate('header');
 
         <div class="botones-secundarios">
             <a href="modificarProducto.php" class="boton">Modificar Producto</a>
-            <a href="modificarProveedor.php" class="boton">Modificar Proveedor</a>
+            <a href="tablaProveedor.php" class="boton">Modificar Proveedor</a>
             <a href="modificarVendedor.php" class="boton">Modificar Vendedor</a>
-            <a href="modificarSucursal.php" class="boton">Modificar Sucursal</a>
+            <a href="tablaSucursal.php" class="boton">Modificar Sucursal</a>
             <a href="tablaClientes.php" class="boton">Modificar Cliente</a>
         </div>
 
