@@ -1,32 +1,32 @@
-<?php 
+<?php
 require 'includes/funciones.php';
 require 'includes/config/database.php';
 $db = conectarDB();
 
-if(strcmp($_POST['boton'], "Guardar") == 0) {
+if (strcmp($_POST['boton'], "Guardar") == 0) {
 
     // Llenar las variables con los valores
     $nombre = mysqli_real_escape_string($db, $_POST['nombre']);
     $telefono = mysqli_real_escape_string($db, $_POST['telefono']);
 
-    if(!$nombre){
+    if (!$nombre) {
         $errores[] = "Falta nombre";
     }
 
-    if(!$telefono){
+    if (!$telefono) {
         $errores[] = "Falta teléfono";
     }
 
     // Revisar que todos los campos esten completos
-    if(empty($errores)) {
+    if (empty($errores)) {
 
         //Actualizar en la BD
-        $query = "UPDATE proveedor SET NombreProveedor = '".$_POST['nombre']."', Telefono = ".$_POST['telefono']." WHERE (IdProveedor = '".$_POST['ID']."');";
+        $query = "UPDATE proveedor SET NombreProveedor = '" . $_POST['nombre'] . "', Telefono = " . $_POST['telefono'] . " WHERE (IdProveedor = '" . $_POST['ID'] . "');";
 
         $resultado = mysqli_query($db, $query);
-        
-        if($resultado) {
-            echo'<script type="text/javascript">
+
+        if ($resultado) {
+            echo '<script type="text/javascript">
                     alert("Proveedor Modificado Correctamente");
                     window.location.href="principal.php";
                 </script>';
@@ -34,7 +34,7 @@ if(strcmp($_POST['boton'], "Guardar") == 0) {
     }
 }
 
-$query = "SELECT * FROM proveedor WHERE IdProveedor=".$_POST['ID'].";";
+$query = "SELECT * FROM proveedor WHERE IdProveedor=" . $_POST['ID'] . ";";
 $resultado = mysqli_query($db, $query);
 $proveedor = mysqli_fetch_row($resultado);
 
@@ -48,8 +48,8 @@ incluirTemplate('header');
         <div class="regresar">
             <a href="tablaProveedor.php">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-              </svg>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                </svg>
             </a>
         </div>
     </header>

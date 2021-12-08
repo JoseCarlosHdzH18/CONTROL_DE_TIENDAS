@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'includes/funciones.php';
 // Incluye el template
 incluirTemplate('header');
