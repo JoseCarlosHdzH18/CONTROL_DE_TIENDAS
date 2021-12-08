@@ -13,7 +13,7 @@ incluirTemplate('header');
 
         <div class="botones-principales">
             <a href="#" class="boton-verde boton-principal">Iniciar Venta</a>
-            <a href="#" class="boton-azulClaro boton-principal">Historial de Ventas</a>
+            <a href="verHistorial.php" class="boton-azulClaro boton-principal">Historial</a>
         </div>
 
         <div class="botones-secundarios">
