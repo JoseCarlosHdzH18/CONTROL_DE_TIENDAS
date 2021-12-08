@@ -1,0 +1,66 @@
+table {
+    width: 100%;
+}
+
+.tabla {
+    padding: 10px;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    border-spacing: 1px;
+}
+
+td {
+    text-align: center;
+}
+
+th {
+    font-size: 2rem;
+    color: $blanco;
+    background-color: lighten($color: $grisOscuro, $amount: 20%);
+}
+
+tr:nth-child(even) {
+    background-color: $blanco;
+}
+
+tr:nth-child(odd) {
+    background-color: darken($color: $gris, $amount: 2%);
+}
+
+tr:hover {
+    // background-color: $azulClaroTransparente;
+    cursor: default;
+}
+
+.btn-modificar,
+.btn-eliminar {
+    padding: 1rem 2rem;
+    font-size: 1.7rem;
+    font-weight: $regular;
+    color: $negro;
+    border: none;
+    border-radius: 1rem;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btn-modificar {
+    background-color: $amarillo;
+    &:hover {
+        background-color: darken($amarillo, $amount: 10%);
+    }
+}
+
+.btn-eliminar {
+    background-color: $rojo;
+    &:hover {
+        background-color: darken($rojo, $amount: 10%);
+    }
+}
