@@ -1,4 +1,4 @@
-<?php
+<?php 
 require 'includes/config/database.php';
 require 'includes/funciones.php';
 
@@ -13,30 +13,30 @@ $nombre = '';
 $telefono = '';
 
 // Ejecutar el codigo despues de que el usuario envia el formulario
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Llenar las variables con los valores
     $nombre = mysqli_real_escape_string($db, $_POST['nombre']);
     $telefono = mysqli_real_escape_string($db, $_POST['telefono']);
 
-    if (!$nombre) {
+    if(!$nombre){
         $errores[] = "Falta nombre";
     }
 
-    if (!$telefono) {
+    if(!$telefono){
         $errores[] = "Falta teléfono";
     }
 
     // Revisar que todos los campos esten completos
-    if (empty($errores)) {
+    if(empty($errores)) {
 
         //Insertar en la BD
         $query = "INSERT INTO clientes (NombreCliente, Telefono) VALUES ('$nombre', $telefono);";
 
         $resultado = mysqli_query($db, $query);
-
-        if ($resultado) {
-            echo '<script type="text/javascript">
+        
+        if($resultado) {
+            echo'<script type="text/javascript">
                     alert("Cliente Agregado Correctamente");
                     window.location.href="principal.php";
                 </script>';
@@ -54,8 +54,8 @@ incluirTemplate('header');
         <div class="regresar">
             <a href="principal.php">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-                </svg>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+              </svg>
             </a>
         </div>
     </header>
@@ -64,9 +64,9 @@ incluirTemplate('header');
 
         <h1>Agregar un Cliente</h1>
 
-        <?php foreach ($errores as $error) :  ?>
+        <?php foreach($errores as $error) :  ?>
             <div class="text-center alert error">
-                <?php echo $error; ?>
+                <?php echo $error;?>
             </div>
         <?php endforeach; ?>
 

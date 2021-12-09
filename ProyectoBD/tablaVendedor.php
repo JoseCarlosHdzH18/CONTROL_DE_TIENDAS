@@ -4,10 +4,10 @@
     $db = conectarDB();
 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && strcmp($_POST['boton'], "Eliminar") == 0){
-        $query = "DELETE FROM proveedor WHERE (IdProveedor = ".$_POST['ID'].");";
+        $query = "DELETE FROM vendedor WHERE (IdVendedor = ".$_POST['ID'].");";
         mysqli_query($db, $query);
     }
-    $query = "Select * FROM proveedor";
+    $query = "Select * FROM vendedor";
     $resultado = mysqli_query($db, $query);
 
     incluirTemplate('header');
@@ -23,7 +23,7 @@
               </svg>
             </a>
         </div>
-        <h1>Proveedores</h1>
+        <h1>Empleados</h1>
     </header>
     <body>
         <div class="tabla contenido-centrado">
@@ -31,7 +31,9 @@
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
+                <th>Dirección</th>
                 <th>Teléfono</th>
+                <th>Puesto</th>
                 <th colspan="2">Acción</th>
             </tr>
             
@@ -40,15 +42,17 @@
                     echo "<tr>
                         <td>$fila[0]</td>
                         <td>$fila[1]</td>
+                        <td>$fila[3]</td>
                         <td>$fila[2]</td>
+                        <td>$fila[4]</td>
                         <td>
-                            <form action='modificarProveedor.php' method='POST'>
+                            <form action='modificarVendedor.php' method='POST'>
                             <input type='hidden' name='ID' value='$fila[0]'>
                             <input type='submit' name='boton' value='Modificar' class='btn-modificar'>
                             </form>
                         </td>
                         <td>
-                            <form action='tablaProveedor.php' method='POST'>
+                            <form action='tablaVendedor.php' method='POST'>
                             <input type='hidden' name='ID' value='$fila[0]'>
                             <input type='submit' name='boton' value='Eliminar' class='btn-eliminar'>
                             </form>
@@ -56,7 +60,7 @@
                         </tr>";
                 }
             ?>
-        </table>
-        </div>   
+        </table>   
+        </div>
     </body>
 </html>

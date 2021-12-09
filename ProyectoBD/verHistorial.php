@@ -56,7 +56,7 @@ incluirTemplate('header');
             <table>
                 <caption>PRODUCTOS VENDIDOS</caption>
                 <tr>
-                    <td>ID Compra</td>
+                    <td>ID Venta</td>
                     <td>Cantidad</td>
                     <td>Precio</td>
                     <td>ID Producto</td>
@@ -71,10 +71,10 @@ incluirTemplate('header');
                     while ($datos = $resultado2->fetch_array()) {
                     ?>
                         <tr>
-                            <td><?php echo $datos["IdProducto"] ?></td>
+                            <td><?php echo $datos["IdVenta"] ?></td>
                             <td><?php echo $datos["Cantidad"] ?></td>
                             <td><?php echo $datos["PrecioVendido"] ?></td>
-                            <td><?php echo $datos["IdVenta"] ?></td>
+                            <td><?php echo $datos["IdProducto"] ?></td>
                         </tr>
                 <?php
                     }

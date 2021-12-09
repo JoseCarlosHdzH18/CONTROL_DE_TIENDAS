@@ -1,4 +1,4 @@
-<?php
+<?php 
 require 'includes/funciones.php';
 
 
@@ -12,8 +12,8 @@ incluirTemplate('header');
     <main class="contenido-centrado">
 
         <div class="botones-principales">
-            <a href="#" class="boton-verde boton-principal">Iniciar Venta</a>
-            <a href="verHistorial.php" class="boton-azulClaro boton-principal">Historial</a>
+            <a href="seleccionarSucursal.php" class="boton-verde boton-principal">Iniciar Venta</a>
+            <a href="verHistorial.php" class="boton-azulClaro boton-principal">Historial de Ventas</a>
         </div>
 
         <div class="botones-secundarios">
@@ -27,7 +27,7 @@ incluirTemplate('header');
         <div class="botones-secundarios">
             <a href="modificarProducto.php" class="boton">Modificar Producto</a>
             <a href="tablaProveedor.php" class="boton">Modificar Proveedor</a>
-            <a href="modificarVendedor.php" class="boton">Modificar Vendedor</a>
+            <a href="tablaVendedor.php" class="boton">Modificar Vendedor</a>
             <a href="tablaSucursal.php" class="boton">Modificar Sucursal</a>
             <a href="tablaClientes.php" class="boton">Modificar Cliente</a>
         </div>
