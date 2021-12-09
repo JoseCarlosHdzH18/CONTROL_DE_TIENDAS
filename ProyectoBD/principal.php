@@ -22,11 +22,11 @@ incluirTemplate('header');
             <a href="agregarVendedor.php" class="boton">Agregar Vendedor</a>
             <a href="agregarSucursal.php" class="boton">Agregar Sucursal</a>
             <a href="agregarClientes.php" class="boton">Agregar Cliente</a>
-            <a href="agregarClientes.php" class="boton">Agregar Compra</a>
+            <a href="tablaProducto.php" class="boton">Agregar Compra</a>
         </div>
 
         <div class="botones-secundarios">
-            <a href="tablaProducto.php" class="boton">Modificar Producto</a>
+            <a href="tablaProductosC.php" class="boton">Modificar Producto</a>
             <a href="tablaProveedor.php" class="boton">Modificar Proveedor</a>
             <a href="tablaVendedor.php" class="boton">Modificar Vendedor</a>
             <a href="tablaSucursal.php" class="boton">Modificar Sucursal</a>
