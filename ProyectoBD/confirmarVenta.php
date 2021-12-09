@@ -27,13 +27,8 @@ if(strcmp($_POST['boton'], "Finalizar") === 0) {
     //Insertar venta en la BD
     $query = "INSERT INTO venta (TotalVenta, Fecha, IdVendedor, IdCliente) VALUES ('$total', '$fecha', '$idvendedor', '$idcliente');";
     $resultado = mysqli_query($db, $query);
-    if(!$resultado){
-        echo $_POST['cliente'];
-    }
-    $query = "SELECT IDENT_CURRENT(venta)";
-    $resultado = mysqli_query($db, $query);
-    //Buscar IdVenta
-    $query = "SELECT * FROM venta;";
+
+    $query = "SELECT IdVenta FROM venta;";
     $resultado = mysqli_query($db, $query);
     while ($venta = mysqli_fetch_assoc($resultado)){
         $idventa = $venta['IdVenta'];
@@ -52,7 +47,7 @@ if(strcmp($_POST['boton'], "Finalizar") === 0) {
     
     if($resultado && $resultado1 && $resultado2) {
         echo'<script type="text/javascript">
-                alert("Venta Realizada Con Éxito '.$query2.'");
+                alert("Venta Realizada Con Éxito");
                 window.location.href="principal.php";
             </script>';
     }
