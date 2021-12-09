@@ -55,7 +55,7 @@ if(strcmp($_POST['boton'], "Guardar") === 0){
         $passwordHash = password_hash($contrasena, PASSWORD_DEFAULT);
 
         echo "<p>$passwordHash<p>";
-        $query = "UPDATE vendedor SET Nombre = '".$_POST['nombre']."', Telefono = ".$_POST['telefono'].", Direccion = '".$_POST['direccion']."', Puesto = '".$_POST['puesto']."', Contrasena = '".$passwordHash."' WHERE (IdVendedor='".$_POST['ID']."');";
+        $query = "UPDATE vendedor SET Nombre = '".$nombre."', Telefono = ".$telefono.", Direccion = '".$domicilio."', Puesto = '".$puesto."', Contrasena = '".$passwordHash."' WHERE (IdVendedor='".$_POST['ID']."');";
 
         $resultado = mysqli_query($db, $query);
 
@@ -94,21 +94,21 @@ if(strcmp($_POST['boton'], "Guardar") === 0){
 
         <h1>Modificar un Empleado</h1>
 
-        <form class="formulario">
+        <form class="formulario" method="POST">
             <fieldset>
                 <legend> Información sobre el Empleado</legend>
-
+                <?php echo "<input type='hidden' name='ID' value='".$_POST['ID']."'>" ?>
                 <label for="nombre">Nombre</label>
-                <?php echo "<input type='text' value='$vendedor[1]' placeholder='Nombre Completo del Empleado' id='nombre' required>" ?>
+                <?php echo "<input type='text' value='$vendedor[1]' placeholder='Nombre Completo del Empleado' id='nombre' name='nombre' required>" ?>
 
                 <label for="telefono">Teléfono</label>
-                <?php echo "<input type='tel' placeholder='Teléfono del Empleado' id='telefono' value='$vendedor[2]' required>" ?>
+                <?php echo "<input type='tel' placeholder='Teléfono del Empleado' id='telefono' name='telefono' value='$vendedor[2]' required>" ?>
 
                 <label for="domicilio">Domicilio</label>
-                <?php echo "<input type='text' placeholder='Domicilio del Empleado' id='domicilio' value='$vendedor[3]' required>" ?>
+                <?php echo "<input type='text' placeholder='Domicilio del Empleado' id='domicilio' name='domicilio' value='$vendedor[3]' required>" ?>
 
                 <label for="puesto">Puesto</label>
-                <select id="puesto" required>
+                <select id="puesto" name="puesto" required>
                     <option disabled>-- Seleccione --</option>
                     <?php
                         echo "<option value='vendedor'";
@@ -125,14 +125,14 @@ if(strcmp($_POST['boton'], "Guardar") === 0){
                 </select>
 
                 <label for="password">Contraseña</label>
-                <input type="password" placeholder="Este Campo lo Tiene que Llenar el Empleado" id="password" required>
+                <input type="password" placeholder="Este Campo lo Tiene que Llenar el Empleado" id="password" name="password" required>
 
                 <label for="password">Confirmar Contraseña</label>
-                <input type="password" placeholder="Ingresar Nuevamente la Contraseña" id="password" required>
+                <input type="password" placeholder="Ingresar Nuevamente la Contraseña" id="password" name="passwordConf" required>
 
             </fieldset>
 
-            <input type="submit" id="boton" value="Guardar" class="boton">
+            <input type="submit" id="boton" name="boton" value="Guardar" class="boton">
         </form>
 
     </main>
