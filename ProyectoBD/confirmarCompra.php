@@ -51,7 +51,7 @@ if(strcmp($_POST['boton'], "Finalizar") === 0) {
     
     if($resultado && $resultado1 && $resultado2) {
         echo'<script type="text/javascript">
-                alert("Compra Registrada Con Éxito '.$query2.'");
+                alert("Compra Registrada Con Éxito");
                 window.location.href="principal.php";
             </script>';
     }
