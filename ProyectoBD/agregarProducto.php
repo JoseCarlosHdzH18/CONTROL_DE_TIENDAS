@@ -28,19 +28,14 @@
     // Ejecutar el codigo despues de que el usuario envia el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        echo "<pre>";
-        var_dump($_POST);
-        echo "</pre>";
+        // echo "<pre>";
+        // var_dump($_POST);
+        // echo "</pre>";
 
         // Llenar las variables con los valores
         $nombre = mysqli_real_escape_string($db, $_POST['nombre']);
         $marca = mysqli_real_escape_string($db, $_POST['marca']);
         $precioVenta = mysqli_real_escape_string($db, $_POST['precioVenta']);
-        $sucursal = mysqli_real_escape_string($db, $_POST['sucursales']);
-        $stock = mysqli_real_escape_string($db, $_POST['stock']);
-        $precioCompra = mysqli_real_escape_string($db, $_POST['precioCompra']);
-        $proveedor = mysqli_real_escape_string($db, $_POST['provedores']);
-        $fechaCompra = date('Y/m/d');
 
 
         if(!$nombre){
@@ -55,32 +50,19 @@
             $errores[] = "Falta precio de venta";
         }
 
-        if(!$sucursal){
-            $errores[] = "Falta sucursal";
-        }
-
-        if(!$stock){
-            $errores[] = "Falta stock";
-        }
-
-        if(!$precioCompra){
-            $errores[] = "Falta precioCompra";
-        }
-
-        if(!$proveedor){
-            $errores[] = "Falta proveedor";
-        }
-
         // Revisar que todos los campos esten completos
         if(empty($errores)) {
 
             //Insertar en la BD
-            $query = "";
+            $query = "INSERT INTO producto (NombreProducto, MarcaProducto, Precio) VALUES ('$nombre', '$marca', $precioVenta);";
 
             $resultado = mysqli_query($db, $query);
             
             if($resultado) {
-                header('Location: principal.php?resultado=1');
+                echo'<script type="text/javascript">
+                    alert("Producto Agregado Correctamente");
+                    window.location.href="principal.php";
+                </script>';
             }
         }
 
