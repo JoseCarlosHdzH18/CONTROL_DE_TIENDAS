@@ -38,7 +38,7 @@
                 <th>Cantidad</th>
             </tr>
             <?php
-                while(($fila = mysqli_fetch_assoc($resultado)) == true){
+                while(($fila = mysqli_fetch_assoc($resultado)) == true && $fila['Stock'] > 0){
                     echo "
                         <tr>
                         <td><input type='checkbox' id='".$fila['IdProducto']."' name='productos[]' value='".$fila['IdProducto']."'></td>
