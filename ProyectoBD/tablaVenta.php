@@ -75,6 +75,9 @@
                                 if (parseInt(document.getElementById('".$fila['IdProducto']."s').value, 10) > parseInt('".$fila['Stock']."',10)){
                                     document.getElementById('".$fila['IdProducto']."s').value = '".$fila['Stock']."';
                                 }
+                                if (parseInt(document.getElementById('".$fila['IdProducto']."s').value, 10) === 0){
+                                    document.getElementById('".$fila['IdProducto']."s').disabled = true;
+                                }
                             };
                         </script>
                         </tr>";

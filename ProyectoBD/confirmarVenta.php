@@ -5,7 +5,7 @@ $total = 0;
 $db = conectarDB();
 
 $errores = [];
-if (empty($_POST['cantidades'])){
+if (empty($_POST['cantidades']) || empty($_POST['productos'])){
     echo "<script>
         alert('No se selecciónó ningún producto');
         history.back();
@@ -83,7 +83,7 @@ incluirTemplate('header');
             </svg>
         </a>
     </div>
-    <h1>Seleccione los productos a vender</h1>
+    <h1>Información de la Venta</h1>
 </header>
 <form class="formulario" action="confirmarVenta.php" method="POST">
     <div class="tabla contenido-centrado">
