@@ -1,5 +1,46 @@
 <?php
 require 'includes/funciones.php';
+require 'includes/config/database.php';
+$db = conectarDB();
+
+if (strcmp($_POST['boton'], "Guardar") == 0) {
+
+    // Llenar las variables con los valores
+    $nombre = mysqli_real_escape_string($db, $_POST['nombre']);
+    $telefono = mysqli_real_escape_string($db, $_POST['telefono']);
+    $direccion = mysqli_real_escape_string($db, $_POST['direccion']);
+
+    if (!$nombre) {
+        $errores[] = "Falta nombre";
+    }
+
+    if (!$telefono) {
+        $errores[] = "Falta teléfono";
+    }
+    if (!$direccion) {
+        $errores[] = "Falta direccion";
+    }
+
+    // Revisar que todos los campos esten completos
+    if (empty($errores)) {
+
+        //Actualizar en la BD
+        $query = "UPDATE vendedor SET Nombre = '" . $_POST['nombre'] . "', Telefono = " . $_POST['telefono'] . ", Direccion = '" . $_POST['direccion'] . "' WHERE (IdVendedor = '" . $_POST['ID'] . "');";
+        $resultado = mysqli_query($db, $query);
+
+        if ($resultado) {
+            echo '<script type="text/javascript">
+                    alert("Vendedor Modificado Correctamente");
+                    window.location.href="principal.php";
+                </script>';
+        }
+    }
+}
+
+$query = "SELECT * FROM vendedor WHERE IdVendedor=" . $_POST['ID'] . ";";
+$resultado = mysqli_query($db, $query);
+$vendedor = mysqli_fetch_row($resultado);
+
 // Incluye el template
 incluirTemplate('header');
 
@@ -18,37 +59,27 @@ incluirTemplate('header');
 
     <main class="contenido-centrado mt mb">
 
-        <h1>Modificar un Empleado</h1>
+        <h1>Modificar un Vendedor</h1>
 
-        <form class="formulario">
+        <form class="formulario" method="POST">
             <fieldset>
-                <legend> Información sobre el Empleado</legend>
+                <legend> Información sobre el Vendedor</legend>
+
+                <?php echo "<input type='hidden' name='ID' value='$vendedor[0]'>" ?>
 
                 <label for="nombre">Nombre</label>
-                <input type="text" placeholder="Nombre Completo del Empleado" id="nombre" required>
+                <?php echo "<input type='text' placeholder='Nombre del vendedor' name='nombre' value='$vendedor[1]' required>" ?>
 
                 <label for="telefono">Teléfono</label>
-                <input type="tel" placeholder="Teléfono del Empleado" id="telefono" required>
+                <?php echo "<input type='text' placeholder='Teléfono del vendedor' name='telefono' value='$vendedor[2]' required>" ?>
 
-                <label for="domicilio">Domicilio</label>
-                <input type="text" placeholder="Domicilio del Empleado" id="domicilio" required>
+                <label for="direccion">Direccion</label>
+                <?php echo "<input type='text' placeholder='Dirección del vendedor' name='direccion' value='$vendedor[3]' required>" ?>
 
-                <label for="puesto">Puesto</label>
-                <select id="puesto" required>
-                    <option value="" disabled selected>-- Seleccione --</option>
-                    <option value="vendedor">Vendedor</option>
-                    <option value="administrador">Administrador</option>
-                </select>
-
-                <label for="password">Contraseña</label>
-                <input type="password" placeholder="Este Campo lo Tiene que Llenar el Empleado" id="password" required>
-
-                <label for="password">Confirmar Contraseña</label>
-                <input type="password" placeholder="Ingresar Nuevamente la Contraseña" id="password" required>
 
             </fieldset>
 
-            <input type="submit" value="Guardar" class="boton">
+            <input type="submit" name="boton" value="Guardar" class="boton">
         </form>
 
     </main>
