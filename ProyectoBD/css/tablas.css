@@ -1,0 +1,29 @@
+table{
+    width: 100%;
+}
+.tabla{
+    padding: 10px;
+}
+table, th, td{
+    border: 1px solid black;
+    border-collapse:collapse;
+    padding: 10px;
+    border-spacing: 1px;
+}
+td{
+    text-align: center;
+}
+th{
+    font-size: 20px;
+    color: wheat;
+    background-color: darkblue;
+}
+tr:nth-child(even){
+    background-color: #ddfdd3;
+}
+tr:nth-child(odd){
+    background-color:#a8dadc;
+}
+tr:hover{
+    background-color: #fa6b52;
+}
