@@ -33,7 +33,7 @@ incluirTemplate('header');
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Teléfono</th>
-                <th>Direccion</th>
+                <th>Dirección</th>
                 <th colspan="2">Acción</th>
             </tr>
 
