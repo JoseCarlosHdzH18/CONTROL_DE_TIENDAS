@@ -36,10 +36,10 @@
             
             <?php
                 while(($fila = mysqli_fetch_row($resultado)) == true){
-                    $query2 = "SELECT NombreProducto,MarcaProducto FROM producto WHERE IdProducto = " . $fila[0].";";
+                    $query2 = "SELECT NombreProducto FROM producto WHERE IdProducto = " . $fila[3].";";
                     $resultado2 = mysqli_query($db, $query2);
                     $nombre = $resultado2->fetch_array()[0] ?? '';
-                    $query2 = "SELECT MarcaProducto FROM producto WHERE IdProducto = " . $fila[0].";";
+                    $query2 = "SELECT MarcaProducto FROM producto WHERE IdProducto = " . $fila[3].";";
                     $resultado2 = mysqli_query($db, $query2);
                     $marca = $resultado2->fetch_array()[0] ?? '';
                     echo "<tr>
