@@ -4,7 +4,7 @@
     $db = conectarDB();
 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && strcmp($_POST['boton'], "Desplegar") == 0){
-        $query = "SELECT * FROM productovendido  WHERE (IdVenta = '".$_POST['ID']."');";
+        $query = "SELECT * FROM productocomprado  WHERE (IdCompra = '".$_POST['ID']."');";
         mysqli_query($db, $query);
     }
     $resultado = mysqli_query($db, $query);
@@ -22,7 +22,7 @@
               </svg>
             </a>
         </div>
-        <h1>Productos de la Venta</h1>
+        <h1>Productos Comprados</h1>
     </header>
     <body>
         <div class="tabla contenido-centrado">

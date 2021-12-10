@@ -11,6 +11,9 @@ $resultado = mysqli_query($db, $query);
 $query2 = "SELECT * FROM venta;";
 $resultado2 = mysqli_query($db, $query2);
 
+$query1 = "SELECT * FROM compra;";
+$resultado1 = mysqli_query($db, $query1);
+
 // Incluye el template
 incluirTemplate('header');
 ?>
@@ -33,19 +36,26 @@ incluirTemplate('header');
                 <caption>PRODUCTOS COMPRADOS</caption>
                 <tr>
                     <td>ID Compra</td>
-                    <td>Cantidad</td>
-                    <td>Precio</td>
-                    <td>ID Producto</td>
+                    <td>Fecha</td>
+                    <td>Total</td>
+                    <td></td>
 
                 </tr>
                 <?php
-                while ($datos = $resultado->fetch_array()) {
+                while ($datos = $resultado1->fetch_array()) {
                 ?>
                     <tr>
                         <td><?php echo $datos["IdCompra"] ?></td>
-                        <td><?php echo $datos["Cantidad"] ?></td>
-                        <td><?php echo $datos["PrecioComprado"] ?></td>
-                        <td><?php echo $datos["IdProducto"] ?></td>
+                        <td><?php echo $datos["Fecha"] ?></td>
+                        <td>$<?php echo $datos["TotalCompra"] ?></td>
+                        <?php echo "
+                        <td>
+                                <form action='tablaHistorialComprados.php' method='POST'>
+                                    <input type='hidden' name='ID' value='$datos[0]'>
+                                    <input type='submit' name='boton' value='Desplegar' class='btn-modificar'>
+                                </form>
+                        </td>
+                        ";?>
                     </tr>
                 <?php
                 }
@@ -58,6 +68,7 @@ incluirTemplate('header');
                 <tr>
                     <td>ID Venta</td>
                     <td>Fecha</td>
+                    <td>Total</td>
                     <td></td>
 
                 </tr>
@@ -72,6 +83,7 @@ incluirTemplate('header');
                         <tr>
                             <td> $datos[0]</td>
                             <td> $datos[2]</td>
+                            <td>$$datos[1]</td>
                             <td>
                                 <form action='tablaHistorial.php' method='POST'>
                                     <input type='hidden' name='ID' value='$datos[0]'>
