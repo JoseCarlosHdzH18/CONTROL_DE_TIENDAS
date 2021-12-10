@@ -8,7 +8,7 @@ $db = conectarDB();
 $query = "SELECT * FROM productocomprado;";
 $resultado = mysqli_query($db, $query);
 
-$query2 = "SELECT * FROM productovendido;";
+$query2 = "SELECT * FROM venta;";
 $resultado2 = mysqli_query($db, $query2);
 
 // Incluye el template
@@ -27,10 +27,10 @@ incluirTemplate('header');
         </div>
     </header>
     <main class="contenido-centrado mt mb">
-        <h1 class="boton-azulClaro " >Historial</h1>
+        <h1 class="boton-azulClaro ">Historial</h1>
         <div>
             <table>
-                <caption >PRODUCTOS COMPRADOS</caption>
+                <caption>PRODUCTOS COMPRADOS</caption>
                 <tr>
                     <td>ID Compra</td>
                     <td>Cantidad</td>
@@ -57,9 +57,8 @@ incluirTemplate('header');
                 <caption>PRODUCTOS VENDIDOS</caption>
                 <tr>
                     <td>ID Venta</td>
-                    <td>Cantidad</td>
-                    <td>Precio</td>
-                    <td>ID Producto</td>
+                    <td>Fecha</td>
+                    <td></td>
 
                 </tr>
                 <?php
@@ -69,14 +68,18 @@ incluirTemplate('header');
                     <?php
                 } else {
                     while ($datos = $resultado2->fetch_array()) {
-                    ?>
+                    echo "
                         <tr>
-                            <td><?php echo $datos["IdVenta"] ?></td>
-                            <td><?php echo $datos["Cantidad"] ?></td>
-                            <td><?php echo $datos["PrecioVendido"] ?></td>
-                            <td><?php echo $datos["IdProducto"] ?></td>
+                            <td> $datos[0]</td>
+                            <td> $datos[2]</td>
+                            <td>
+                                <form action='tablaHistorial.php' method='POST'>
+                                    <input type='hidden' name='ID' value='$datos[0]'>
+                                    <input type='submit' name='boton' value='Desplegar' class='btn-modificar'>
+                                </form>
+                            </td>
                         </tr>
-                <?php
+                        ";
                     }
                 }
                 ?>
